@@ -1,0 +1,248 @@
+/* =========================
+   SIDEBAR FIX (SCROLL + CLICK)
+========================= */
+
+.main-sidebar {
+  height: 100vh;
+  overflow: hidden;
+}
+
+#sidebar-wrapper {
+  height: calc(100vh - 70px); /* navbar height */
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-bottom: 20px;
+}
+
+/* Scrollbar style */
+#sidebar-wrapper::-webkit-scrollbar {
+  width: 6px;
+}
+
+#sidebar-wrapper::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+}
+
+/* Ensure links clickable */
+.sidebar-menu li a {
+  cursor: pointer;
+}
+
+
+
+/* =========================
+   PARINAY PAVILION THEME
+========================= */
+
+/* Sidebar Background */
+.main-sidebar {
+  background: linear-gradient(180deg, #0f2a44, #163a5f);
+}
+
+/* Brand section */
+.sidebar-brand {
+  background: transparent;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.sidebar-brand a {
+  color: #fff !important;
+}
+
+/* Menu headers */
+.sidebar-menu .menu-header {
+  color: #e6c17a; /* champagne gold */
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  margin-top: 15px;
+}
+
+/* Menu links */
+.sidebar-menu li a {
+  color: #eaeaea !important;
+  border-radius: 6px;
+  margin: 2px 10px;
+  transition: all 0.3s ease;
+}
+
+/* Icons */
+.sidebar-menu li a i {
+  color: #e6c17a;
+}
+
+/* Hover effect */
+.sidebar-menu li a:hover {
+  background: rgba(230,193,122,0.15);
+  color: #ffffff !important;
+}
+
+/* Active menu */
+.sidebar-menu li.active > a {
+  background: linear-gradient(90deg, #e6c17a, #f3d89f);
+  color: #1e3c72 !important;
+  font-weight: 600;
+}
+
+/* Active icon */
+.sidebar-menu li.active a i {
+  color: #1e3c72;
+}
+
+/* Logout special */
+.sidebar-menu li a[href*="logout"] {
+  color: #ffb3b3 !important;
+}
+
+.sidebar-menu li a[href*="logout"]:hover {
+  background: rgba(255,0,0,0.15);
+  color: #fff !important;
+}
+
+/* Scrollbar */
+#sidebar-wrapper::-webkit-scrollbar-thumb {
+  background: #e6c17a;
+}
+
+
+/* =========================
+   DASHBOARD STAT CARDS
+========================= */
+
+.stat-card {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  border-radius: 14px;
+  background: #ffffff;
+  box-shadow: 0 12px 25px rgba(0,0,0,0.08);
+  transition: all 0.3s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 40px rgba(0,0,0,0.12);
+}
+
+.stat-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 18px;
+  color: #fff;
+}
+
+.bg-gradient-primary {
+  background: linear-gradient(135deg, #1e3c72, #2a5298);
+}
+
+.bg-gradient-gold {
+  background: linear-gradient(135deg, #e6c17a, #f3d89f);
+  color: #1e3c72;
+}
+
+.stat-content h4 {
+  font-size: 15px;
+  color: #777;
+  margin-bottom: 5px;
+}
+
+.stat-content h2 {
+  font-size: 26px;
+  font-weight: 700;
+  color: #1e3c72;
+}
+
+
+
+/* ===== DASHBOARD CARDS ===== */
+
+.dashboard-card {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  padding: 20px;
+  border-radius: 14px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  margin-bottom: 25px;
+  transition: all 0.3s ease;
+}
+
+.dashboard-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 45px rgba(0,0,0,0.15);
+}
+
+.card-icon {
+  width: 65px;
+  height: 65px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  margin-right: 18px;
+}
+
+.card-icon i {
+  width: 28px;
+  height: 28px;
+}
+
+.card-info h4 {
+  font-size: 15px;
+  color: #888;
+  margin-bottom: 4px;
+}
+
+.card-info h2 {
+  font-size: 26px;
+  font-weight: 700;
+  color: #1e3c72;
+}
+
+/* COLORS */
+.bg-blue { background: linear-gradient(135deg, #1e3c72, #2a5298); }
+.bg-gold { background: linear-gradient(135deg, #e6c17a, #f3d89f); color:#1e3c72; }
+.bg-green { background: linear-gradient(135deg, #2ecc71, #27ae60); }
+.bg-purple { background: linear-gradient(135deg, #6a11cb, #2575fc); }
+.bg-red { background: linear-gradient(135deg, #e74c3c, #c0392b); }
+
+
+.dashboard-card {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  border-radius: 14px;
+  padding: 18px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+  margin-bottom: 20px;
+}
+
+.dashboard-card .card-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 22px;
+  margin-right: 15px;
+}
+
+.dashboard-card .card-info h4 {
+  margin: 0;
+  font-size: 14px;
+  color: #777;
+}
+
+.dashboard-card .card-info h2 {
+  margin: 0;
+  font-size: 26px;
+  font-weight: 600;
+}
+

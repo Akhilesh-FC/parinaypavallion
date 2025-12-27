@@ -1,0 +1,36 @@
+<%- include("../../../partials/header") %>
+<%- include("../../../partials/sidebar") %>
+
+<div class="main-content">
+<section class="section">
+
+<div class="section-header">
+  <h1>Gallery</h1>
+
+  <form action="/admin/cms/gallery/add" method="POST" enctype="multipart/form-data">
+    <input type="file" name="image" required>
+    <button class="btn btn-primary">Upload</button>
+  </form>
+</div>
+
+<div class="row mt-4">
+<% images.forEach(img => { %>
+  <div class="col-md-3">
+    <div class="card">
+      <img src="/public/uploads/gallery/<%= img.image %>" class="img-fluid">
+
+      <div class="card-body text-center">
+        <a href="/admin/cms/gallery/edit/<%= img.id %>" class="btn btn-sm btn-info">Edit</a>
+        <a href="/admin/cms/gallery/delete/<%= img.id %>"
+           onclick="return confirm('Delete image?')"
+           class="btn btn-sm btn-danger">Delete</a>
+      </div>
+    </div>
+  </div>
+<% }) %>
+</div>
+
+</section>
+</div>
+
+<%- include("../../../partials/footer") %>

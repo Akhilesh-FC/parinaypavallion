@@ -1,0 +1,191 @@
+<%- include("../partials/header") %>
+<%- include("../partials/sidebar") %>
+
+<style>
+/* ===== DASHBOARD UI ===== */
+.dashboard-card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 22px;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+  transition: all 0.3s ease;
+}
+
+.dashboard-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.08);
+}
+
+.card-icon {
+  width: 54px;
+  height: 54px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  flex-shrink: 0;
+}
+
+.card-icon i {
+  width: 26px;
+  height: 26px;
+}
+
+.card-info h4 {
+  font-size: 14px;
+  color: #6c757d;
+  margin-bottom: 6px;
+  font-weight: 500;
+}
+
+.card-info h2 {
+  font-size: 24px;
+  font-weight: 700;
+  color: #1f2937;
+}
+
+/* Gradient colors */
+.bg-primary { background: linear-gradient(135deg, #4e73df, #224abe); }
+.bg-success { background: linear-gradient(135deg, #1cc88a, #13855c); }
+.bg-warning { background: linear-gradient(135deg, #f6c23e, #dda20a); }
+.bg-dark { background: linear-gradient(135deg, #343a40, #1d2124); }
+.bg-info { background: linear-gradient(135deg, #36b9cc, #258391); }
+.bg-secondary { background: linear-gradient(135deg, #858796, #5a5c69); }
+.bg-danger { background: linear-gradient(135deg, #e74a3b, #be2617); }
+
+/* Mobile spacing */
+@media (max-width: 768px) {
+  .dashboard-card {
+    padding: 18px;
+  }
+}
+</style>
+
+<div class="main-content">
+  <section class="section">
+
+    <div class="section-header">
+      <h1>Admin Dashboard</h1>
+    </div>
+
+    <div class="row">
+
+      <!-- TOTAL USERS -->
+      <div class="col-xl-3 col-lg-4 col-md-6 mb-4">
+        <div class="dashboard-card">
+          <div class="card-icon bg-primary">
+            <i data-feather="users"></i>
+          </div>
+          <div class="card-info">
+            <h4>Total Users</h4>
+            <h2><%= totalUsers %></h2>
+          </div>
+        </div>
+      </div>
+
+      <!-- TOTAL BOOKINGS -->
+      <div class="col-xl-3 col-lg-4 col-md-6 mb-4">
+        <div class="dashboard-card">
+          <div class="card-icon bg-success">
+            <i data-feather="calendar-check"></i>
+          </div>
+          <div class="card-info">
+            <h4>Total Bookings</h4>
+            <h2><%= totalBookings %></h2>
+          </div>
+        </div>
+      </div>
+
+      <!-- UPCOMING EVENTS -->
+      <div class="col-xl-3 col-lg-4 col-md-6 mb-4">
+        <div class="dashboard-card">
+          <div class="card-icon bg-warning">
+            <i data-feather="clock"></i>
+          </div>
+          <div class="card-info">
+            <h4>Upcoming Events</h4>
+            <h2><%= upcomingBookings %></h2>
+          </div>
+        </div>
+      </div>
+
+      <!-- TOTAL REVENUE -->
+      <div class="col-xl-3 col-lg-4 col-md-6 mb-4">
+        <div class="dashboard-card">
+          <div class="card-icon bg-dark">
+            <i data-feather="credit-card"></i>
+          </div>
+          <div class="card-info">
+            <h4>Total Revenue</h4>
+            <h2>₹ <%= totalRevenue %></h2>
+          </div>
+        </div>
+      </div>
+
+      <!-- LAWNS -->
+      <div class="col-xl-3 col-lg-4 col-md-6 mb-4">
+        <div class="dashboard-card">
+          <div class="card-icon bg-success">
+            <i data-feather="tree"></i>
+          </div>
+          <div class="card-info">
+            <h4>Lawns</h4>
+            <h2><%= totalLawns %></h2>
+          </div>
+        </div>
+      </div>
+
+      <!-- HALLS -->
+      <div class="col-xl-3 col-lg-4 col-md-6 mb-4">
+        <div class="dashboard-card">
+          <div class="card-icon bg-info">
+            <i data-feather="home"></i>
+          </div>
+          <div class="card-info">
+            <h4>Halls</h4>
+            <h2><%= totalHalls %></h2>
+          </div>
+        </div>
+      </div>
+
+      <!-- ROOMS -->
+      <div class="col-xl-3 col-lg-4 col-md-6 mb-4">
+        <div class="dashboard-card">
+          <div class="card-icon bg-secondary">
+            <i data-feather="bed"></i>
+          </div>
+          <div class="card-info">
+            <h4>Rooms</h4>
+            <h2><%= totalRooms %></h2>
+          </div>
+        </div>
+      </div>
+
+      <!-- ENQUIRIES -->
+      <div class="col-xl-3 col-lg-4 col-md-6 mb-4">
+        <div class="dashboard-card">
+          <div class="card-icon bg-danger">
+            <i data-feather="mail"></i>
+          </div>
+          <div class="card-info">
+            <h4>Enquiries</h4>
+            <h2><%= totalEnquiries %></h2>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </section>
+</div>
+
+<script>
+  // Feather icons activate
+  feather.replace();
+</script>
+
+<%- include("../partials/footer") %>

@@ -1,0 +1,49 @@
+<%- include("../../partials/header") %>
+<%- include("../../partials/sidebar") %>
+
+<div class="main-content">
+<section class="section">
+
+<div class="section-header">
+  <h1><%= title %></h1>
+  <a href="/admin/properties/<%= type %>/add" class="btn btn-primary">
+    Add <%= type %>
+  </a>
+</div>
+
+<div class="card">
+<div class="card-body table-responsive">
+<table class="table table-bordered table-striped">
+<thead>
+<tr>
+<th>#</th>
+<th>Name</th>
+<th>Guests</th>
+<th>Price</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<% properties.forEach((p,i)=>{ %>
+<tr>
+<td><%= i+1 %></td>
+<td><%= p.name %></td>
+<td><%= p.min_guests %> - <%= p.max_guests %></td>
+<td>₹ <%= p.base_price %></td>
+<td>
+<a href="/admin/properties/<%= type %>/edit/<%= p.id %>" class="btn btn-sm btn-warning">Edit</a>
+<form method="POST" action="/admin/properties/delete/<%= p.id %>" style="display:inline">
+<button class="btn btn-sm btn-danger">Delete</button>
+</form>
+</td>
+</tr>
+<% }) %>
+</tbody>
+</table>
+</div>
+</div>
+
+</section>
+</div>
+
+<%- include("../../partials/footer") %>

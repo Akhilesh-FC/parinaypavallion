@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title><%= title %></title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    /* ✅ SAME CSS AS YOU PROVIDED */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      height: 100vh;
+      display: flex;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    }
+
+    .left-panel {
+      flex: 1;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 60px;
+    }
+
+    .left-panel h1 {
+      font-size: 42px;
+      margin-bottom: 20px;
+    }
+
+    .right-panel {
+      flex: 1;
+      background: #f4f8fb;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .login-box {
+      max-width: 420px;
+      width: 100%;
+      background: #fff;
+      padding: 45px;
+      border-radius: 14px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+    }
+
+    .error-box {
+      background: #ffe3e3;
+      color: #c0392b;
+      padding: 10px;
+      border-radius: 6px;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .form-group {
+      margin-bottom: 22px;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 12px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+
+    .btn-login {
+      width: 100%;
+      padding: 13px;
+      background: linear-gradient(135deg, #1e3c72, #2a5298);
+      border: none;
+      color: #fff;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="left-panel">
+  <div>
+    <h1>Parinay Pavilion</h1>
+    <p>Admin Panel Login</p>
+  </div>
+</div>
+
+<div class="right-panel">
+  <div class="login-box">
+    <h2>Admin Login</h2>
+
+    <% if (error) { %>
+      <div class="error-box"><%= error %></div>
+    <% } %>
+
+    <!-- ✅ FIXED ACTION -->
+    <form method="POST" action="/admin/login">
+      <div class="form-group">
+        <input type="email" name="email" placeholder="Email" required />
+      </div>
+
+      <div class="form-group">
+        <input type="password" name="password" placeholder="Password" required />
+      </div>
+
+      <button class="btn-login" type="submit">Login</button>
+    </form>
+  </div>
+</div>
+
+</body>
+</html>

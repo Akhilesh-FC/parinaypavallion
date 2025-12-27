@@ -1,0 +1,30 @@
+<%- include("../../partials/header") %>
+<%- include("../../partials/sidebar") %>
+
+<div class="main-content">
+<section class="section">
+
+<div class="section-header">
+  <h1>Photo Gallery</h1>
+  <a href="/admin/cms/gallery/add" class="btn btn-primary">+ Add Image</a>
+</div>
+
+<div class="row">
+<% images.forEach(img => { %>
+  <div class="col-md-3">
+    <div class="card">
+      <img src="/public/uploads/gallery/<%= img.image %>" class="img-fluid">
+      <div class="card-body text-center">
+        <a href="/admin/cms/gallery/edit/<%= img.id %>" class="btn btn-sm btn-info">Edit</a>
+        <a href="/admin/cms/gallery/delete/<%= img.id %>" class="btn btn-sm btn-danger"
+           onclick="return confirm('Delete image?')">Delete</a>
+      </div>
+    </div>
+  </div>
+<% }) %>
+</div>
+
+</section>
+</div>
+
+<%- include("../../partials/footer") %>

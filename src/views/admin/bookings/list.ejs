@@ -1,0 +1,95 @@
+<%- include("../../partials/header") %>
+<%- include("../../partials/sidebar") %>
+
+
+<div class="main-content">
+  <section class="section">
+    <div class="section-header">
+      <h1>Booking Management</h1>
+    </div>
+
+    <div class="card">
+      <div class="card-body table-responsive">
+        <table class="table table-bordered table-striped">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>User</th>
+              <th>Property</th>
+              <th>Date</th>
+              <th>Slot</th>
+              <th>Guests</th>
+              <th>Total</th>
+              <th>Paid</th>
+              <th>Status</th>
+              <th>Payment</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+
+            <% bookings.forEach((b, i) => { %>
+              <tr>
+                <td><%= i + 1 %></td>
+
+                <td>
+                  <strong><%= b.User?.name %></strong><br>
+                  <small><%= b.User?.mobile %></small>
+                </td>
+
+                <td>
+                  <%= b.Property?.name %><br>
+                  <small>(<%= b.Property?.type %>)</small>
+                </td>
+
+                <td><%= b.booking_date %></td>
+                <td><%= b.time_slot %></td>
+                <td><%= b.guest_count %></td>
+
+                <td>₹ <%= b.total_amount %></td>
+                <td>₹ <%= b.paid_amount %></td>
+
+                <td>
+                  <% if (b.booking_status === "approved") { %>
+                    <span class="badge badge-success">Approved</span>
+                  <% } else if (b.booking_status === "rejected") { %>
+                    <span class="badge badge-danger">Rejected</span>
+                  <% } else { %>
+                    <span class="badge badge-warning">Pending</span>
+                  <% } %>
+                </td>
+
+                <td>
+                  <% if (b.payment_status === "paid") { %>
+                    <span class="badge badge-success">Paid</span>
+                  <% } else { %>
+                    <span class="badge badge-info">Partial</span>
+                  <% } %>
+                </td>
+
+                <td>
+                  <% if (b.booking_status === "pending") { %>
+                    <form action="/admin/bookings/approve/<%= b.id %>" method="POST" style="display:inline">
+                      <button class="btn btn-sm btn-success">Approve</button>
+                    </form>
+
+                    <form action="/admin/bookings/reject/<%= b.id %>" method="POST" style="display:inline">
+                      <button class="btn btn-sm btn-danger">Reject</button>
+                    </form>
+                  <% } else { %>
+                    —
+                  <% } %>
+                </td>
+
+              </tr>
+            <% }) %>
+
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </section>
+</div>
+
+<%- include("../../partials/footer") %>

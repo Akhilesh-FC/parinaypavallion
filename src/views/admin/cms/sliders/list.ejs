@@ -1,0 +1,84 @@
+<%- include("../../../partials/header") %>
+<%- include("../../../partials/sidebar") %>
+
+<div class="main-content">
+<section class="section">
+
+<div class="section-header">
+  <h1>Slider Management</h1>
+</div>
+
+<div class="card">
+  <div class="card-body">
+    <div class="table-responsive">
+      <table class="table table-bordered table-striped">
+        <thead class="table-dark">
+          <tr>
+            <th>#</th>
+            <th>Image</th>
+            <th>Title</th>
+            <th>Link</th>
+            <th>Status</th>
+            <th width="220">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+
+        <% sliders.forEach((s, i) => { %>
+          <tr>
+            <td><%= i+1 %></td>
+
+            <td>
+              <img src="/public/slider/<%= s.image %>"
+                   style="width:120px;border-radius:6px;">
+            </td>
+
+            <form action="/admin/cms/sliders/update/<%= s.id %>"
+                  method="POST"
+                  enctype="multipart/form-data">
+
+            <td>
+              <input type="text"
+                     name="title"
+                     value="<%= s.title %>"
+                     class="form-control">
+            </td>
+
+            <td>
+              <input type="text"
+                     name="link"
+                     value="<%= s.link %>"
+                     class="form-control">
+            </td>
+
+            <td>
+              <select name="status" class="form-control">
+                <option value="1" <%= s.status == 1 ? "selected" : "" %>>Active</option>
+                <option value="0" <%= s.status == 0 ? "selected" : "" %>>Inactive</option>
+              </select>
+            </td>
+
+            <td>
+              <input type="file" name="image" class="form-control mb-1">
+              <button class="btn btn-success btn-sm">Update</button>
+              <a href="/admin/cms/sliders/delete/<%= s.id %>"
+                 onclick="return confirm('Delete slider?')"
+                 class="btn btn-danger btn-sm">
+                 Delete
+              </a>
+            </td>
+
+            </form>
+          </tr>
+        <% }) %>
+
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+</section>
+</div>
+
+<%- include("../../../partials/footer") %>

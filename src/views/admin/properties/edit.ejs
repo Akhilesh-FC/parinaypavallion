@@ -1,0 +1,40 @@
+<%- include("../../partials/header") %>
+<%- include("../../partials/sidebar") %>
+
+<div class="main-content">
+<section class="section">
+<h1>Edit <%= type %></h1>
+
+<form method="POST">
+
+<input name="name" class="form-control mb-2" value="<%= property.name %>">
+<textarea name="description" class="form-control mb-2"><%= property.description %></textarea>
+
+<div class="row">
+<div class="col-md-6">
+<input name="min_guests" type="number" class="form-control mb-2" value="<%= property.min_guests %>">
+</div>
+<div class="col-md-6">
+<input name="max_guests" type="number" class="form-control mb-2" value="<%= property.max_guests %>">
+</div>
+</div>
+
+<input name="base_price" class="form-control mb-2" value="<%= property.base_price %>">
+
+<h5>Facilities</h5>
+<% facilities.forEach(f=>{ %>
+<label class="mr-3">
+<input type="checkbox" name="facilities[]" value="<%= f.id %>"
+<%= selectedFacilities.includes(f.id) ? "checked" : "" %>>
+<%= f.name %>
+</label>
+<% }) %>
+
+<br><br>
+<button class="btn btn-success">Update</button>
+
+</form>
+</section>
+</div>
+
+<%- include("../../partials/footer") %>

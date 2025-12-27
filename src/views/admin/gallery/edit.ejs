@@ -1,0 +1,32 @@
+<%- include("../../partials/header") %>
+<%- include("../../partials/sidebar") %>
+
+<div class="main-content">
+  <section class="section">
+    <div class="section-header">
+      <h1>Update Image</h1>
+    </div>
+
+    <form method="POST" enctype="multipart/form-data">
+      <div class="form-group">
+        <label>Current Image</label><br>
+        <img src="/public/uploads/<%= image.image %>" width="200">
+      </div>
+
+      <div class="form-group">
+        <label>New Image (optional)</label>
+        <input type="file" name="image" class="form-control">
+      </div>
+
+      <div class="form-group">
+        <label>Type</label>
+        <input type="text" name="type" value="<%= image.type %>" class="form-control">
+      </div>
+
+      <button class="btn btn-success">Update</button>
+    </form>
+
+  </section>
+</div>
+
+<%- include("../../partials/footer") %>

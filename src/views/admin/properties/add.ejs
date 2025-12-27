@@ -1,0 +1,38 @@
+<%- include("../../partials/header") %>
+<%- include("../../partials/sidebar") %>
+
+<div class="main-content">
+<section class="section">
+<h1>Add <%= type %></h1>
+
+<form method="POST">
+
+<input name="name" class="form-control mb-2" placeholder="Name" required>
+<textarea name="description" class="form-control mb-2" placeholder="Description"></textarea>
+
+<div class="row">
+<div class="col-md-6">
+<input name="min_guests" type="number" class="form-control mb-2" placeholder="Min Guests">
+</div>
+<div class="col-md-6">
+<input name="max_guests" type="number" class="form-control mb-2" placeholder="Max Guests">
+</div>
+</div>
+
+<input name="base_price" class="form-control mb-2" placeholder="Base Price">
+
+<h5>Facilities</h5>
+<% facilities.forEach(f=>{ %>
+<label class="mr-3">
+<input type="checkbox" name="facilities[]" value="<%= f.id %>"> <%= f.name %>
+</label>
+<% }) %>
+
+<br><br>
+<button class="btn btn-success">Save</button>
+
+</form>
+</section>
+</div>
+
+<%- include("../../partials/footer") %>

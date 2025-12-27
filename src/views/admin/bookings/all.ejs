@@ -1,0 +1,53 @@
+<%- include("../../partials/header") %>
+<%- include("../../partials/sidebar") %>
+
+<div class="main-content">
+<section class="section">
+<div class="section-header"><h1>All Bookings</h1></div>
+
+<div class="card">
+<div class="card-body table-responsive">
+<table class="table table-bordered table-striped">
+<thead>
+<tr>
+<th>#</th><th>User</th><th>Property</th>
+<th>Date</th><th>Slot</th><th>Guests</th>
+<th>Total</th><th>Paid</th>
+<th>Status</th><th>Payment</th>
+</tr>
+</thead>
+<tbody>
+<% bookings.forEach((b,i)=>{ %>
+<tr>
+<td><%= i+1 %></td>
+<td>
+  <%= b.User ? b.User.name : "N/A" %><br>
+  <small><%= b.User ? b.User.mobile : "" %></small>
+</td>
+
+<td>
+  <% if (b.Property) { %>
+    <%= b.Property.name %>
+  <% } else { %>
+    <span class="text-danger">Property Deleted</span>
+  <% } %>
+</td>
+
+<td><%= b.booking_date %></td>
+<td><%= b.time_slot %></td>
+<td><%= b.guest_count %></td>
+<td>₹<%= b.total_amount %></td>
+<td>₹<%= b.paid_amount %></td>
+<td><span class="badge badge-info"><%= b.booking_status %></span></td>
+<td><span class="badge badge-success"><%= b.payment_status %></span></td>
+</tr>
+<% }) %>
+</tbody>
+</table>
+</div>
+</div>
+
+</section>
+</div>
+
+<%- include("../../partials/footer") %>

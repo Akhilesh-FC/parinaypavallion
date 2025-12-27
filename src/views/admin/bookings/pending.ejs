@@ -1,0 +1,49 @@
+<%- include("../../partials/header") %>
+<%- include("../../partials/sidebar") %>
+
+<div class="main-content">
+<section class="section">
+<div class="section-header"><h1>Pending Approvals</h1></div>
+
+<div class="card">
+<div class="card-body table-responsive">
+<table class="table table-bordered">
+<thead>
+<tr>
+<th>User</th><th>Property</th><th>Date</th>
+<th>Amount</th><th>Action</th>
+</tr>
+</thead>
+<tbody>
+<% bookings.forEach(b=>{ %>
+<tr>
+<td><%= b.User.name %></td>
+<td>
+  <% if (b.Property) { %>
+    <%= b.Property.name %>
+  <% } else { %>
+    <span class="text-danger">Property Deleted</span>
+  <% } %>
+</td>
+
+<td><%= b.booking_date %></td>
+<td>₹<%= b.total_amount %></td>
+<td>
+<form method="POST" action="/admin/bookings/approve/<%= b.id %>" style="display:inline">
+<button class="btn btn-success btn-sm">Approve</button>
+</form>
+<form method="POST" action="/admin/bookings/reject/<%= b.id %>" style="display:inline">
+<button class="btn btn-danger btn-sm">Reject</button>
+</form>
+</td>
+</tr>
+<% }) %>
+</tbody>
+</table>
+</div>
+</div>
+
+</section>
+</div>
+
+<%- include("../../partials/footer") %>

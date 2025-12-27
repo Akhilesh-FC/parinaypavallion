@@ -1,0 +1,47 @@
+<%- include("../../partials/header") %>
+<%- include("../../partials/sidebar") %>
+
+<div class="main-content">
+  <section class="section">
+    <div class="section-header">
+      <h1>Registered Users</h1>
+    </div>
+
+    <div class="card">
+      <div class="card-body table-responsive">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Name</th>
+              <th>Mobile</th>
+              <th>Email</th>
+              <th>Registered On</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% users.forEach((u, i) => { %>
+              <tr>
+                <td><%= i+1 %></td>
+                <td><%= u.name %></td>
+                <td><%= u.mobile || "-" %></td>
+                <td><%= u.email || "-" %></td>
+                <td><%= u.created_at %></td>
+                <td>
+                  <a href="/admin/users/<%= u.id %>/bookings"
+                     class="btn btn-sm btn-primary">
+                     View Bookings
+                  </a>
+                </td>
+              </tr>
+            <% }) %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </section>
+</div>
+
+<%- include("../../partials/footer") %>

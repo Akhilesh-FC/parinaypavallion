@@ -1,3 +1,7 @@
-// router.get("/list", require("../../controllers/api/galleryController").list);
+const express = require("express");
+const router = express.Router();
+const controller = require("../../controllers/api/galleryController");
 
+router.get("/list", controller.list);
 
+module.exports = router;

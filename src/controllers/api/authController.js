@@ -12,6 +12,7 @@ exports.register = async (req, res) => {
   try {
     const { name, email, mobile, password } = req.body;
 
+    // Basic validation
     if (!name || !password || (!email && !mobile)) {
       return res.status(400).json({
         status: false,
@@ -19,6 +20,7 @@ exports.register = async (req, res) => {
       });
     }
 
+    // Email validation
     if (email && !validator.isEmail(email)) {
       return res.status(400).json({
         status: false,
@@ -26,6 +28,7 @@ exports.register = async (req, res) => {
       });
     }
 
+    // Password validation
     if (!passwordRegex.test(password)) {
       return res.status(400).json({
         status: false,
@@ -34,6 +37,7 @@ exports.register = async (req, res) => {
       });
     }
 
+    // Check existing user
     const exists = await User.findOne({
       where: email ? { email } : { mobile }
     });
@@ -45,18 +49,36 @@ exports.register = async (req, res) => {
       });
     }
 
+    // Hash password
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    await User.create({
+    // Create user
+    const user = await User.create({
       name,
       email,
       mobile,
       password: hashedPassword
     });
 
+    // ✅ GENERATE TOKEN (SAME AS LOGIN)
+    const token = jwt.sign(
+      { id: user.id },
+      process.env.JWT_SECRET,
+      { expiresIn: "7d" }
+    );
+
+    // ✅ RETURN USER + TOKEN
     return res.json({
       status: true,
-      message: "Registration successful"
+      message: "Registration successful",
+      token,
+      user: {
+        id: user.id,
+        name: user.name,
+        email: user.email,
+        mobile: user.mobile,
+        created_at: user.created_at || null
+      }
     });
 
   } catch (err) {
@@ -66,6 +88,9 @@ exports.register = async (req, res) => {
     });
   }
 };
+
+
+
 
 /* =========================
    LOGIN

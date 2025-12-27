@@ -1,7 +1,7 @@
 const { DataTypes } = require("sequelize");
 const sequelize = require("../config/database");
 
-const Slider = sequelize.define("sliders", {
+const Slider = sequelize.define("Slider", {
   id: {
     type: DataTypes.BIGINT.UNSIGNED,
     autoIncrement: true,
@@ -24,7 +24,9 @@ const Slider = sequelize.define("sliders", {
     defaultValue: 1
   }
 }, {
-  timestamps: true
+  tableName: "sliders",
+  timestamps: true   // 👈 DEFAULT Sequelize columns
+  // ❌ createdAt / updatedAt mapping REMOVE
 });
 
 module.exports = Slider;

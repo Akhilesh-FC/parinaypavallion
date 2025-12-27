@@ -1,0 +1,23 @@
+<%- include("../../../partials/header") %>
+<%- include("../../../partials/sidebar") %>
+
+<div class="main-content">
+<section class="section">
+
+<h2>Update Gallery Image</h2>
+
+<img src="/public/uploads/gallery/<%= image.image %>" width="200">
+
+<form method="POST" enctype="multipart/form-data">
+  <div class="form-group">
+    <label>Change Image</label>
+    <input type="file" name="image">
+  </div>
+
+  <button class="btn btn-success">Update</button>
+</form>
+
+</section>
+</div>
+
+<%- include("../../../partials/footer") %>
